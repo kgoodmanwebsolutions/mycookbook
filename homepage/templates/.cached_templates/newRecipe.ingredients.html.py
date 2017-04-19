@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1492559708.9266999
+_modified_time = 1492572974.121332
 _enable_loop = True
 _template_filename = 'C:/Users/Kristin/Desktop/mycookbook/homepage/templates/newRecipe.ingredients.html'
 _template_uri = 'newRecipe.ingredients.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
-_exports = ['bannerArea', 'mainContent']
+_exports = ['title', 'bannerArea', 'mainContent']
 
 
 def _mako_get_namespace(context, name):
@@ -29,18 +29,25 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        source = context.get('source', UNDEFINED)
-        ingredient_array = context.get('ingredient_array', UNDEFINED)
         def bannerArea():
             return render_bannerArea(context._locals(__M_locals))
         addIngredientForm = context.get('addIngredientForm', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
+        ingredient_array = context.get('ingredient_array', UNDEFINED)
         cook_time = context.get('cook_time', UNDEFINED)
         createIngredientForm = context.get('createIngredientForm', UNDEFINED)
         def mainContent():
             return render_mainContent(context._locals(__M_locals))
         recipe_name = context.get('recipe_name', UNDEFINED)
+        source = context.get('source', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n\r\n<!-- INCLUDE HELP TEXT FOR DECIMAL CONVERSIONS -->\r\n\r\n')
+        __M_writer('\r\n\r\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
+            context['self'].title(**pageargs)
+        
+
+        __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'bannerArea'):
             context['self'].bannerArea(**pageargs)
         
@@ -51,6 +58,18 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n  New Recipe - Step 2 | My Cookbook\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -71,14 +90,14 @@ def render_bannerArea(context,**pageargs):
 def render_mainContent(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        source = context.get('source', UNDEFINED)
-        ingredient_array = context.get('ingredient_array', UNDEFINED)
         addIngredientForm = context.get('addIngredientForm', UNDEFINED)
+        ingredient_array = context.get('ingredient_array', UNDEFINED)
         cook_time = context.get('cook_time', UNDEFINED)
         createIngredientForm = context.get('createIngredientForm', UNDEFINED)
         def mainContent():
             return render_mainContent(context)
         recipe_name = context.get('recipe_name', UNDEFINED)
+        source = context.get('source', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n<div class="content container">\r\n    <h1>Submit New Recipe - Step 2</h1>\r\n\r\n    <h4>Recipe Name: ')
         __M_writer(str( recipe_name ))
@@ -131,6 +150,6 @@ def render_mainContent(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/newRecipe.ingredients.html", "uri": "newRecipe.ingredients.html", "source_encoding": "utf-8", "line_map": {"28": 0, "43": 1, "48": 7, "53": 138, "59": 5, "65": 5, "71": 9, "83": 9, "84": 13, "85": 13, "86": 14, "87": 14, "88": 15, "89": 15, "90": 20, "91": 21, "92": 22, "93": 22, "94": 22, "95": 24, "96": 25, "97": 25, "98": 25, "99": 28, "100": 29, "101": 30, "102": 31, "103": 32, "104": 32, "105": 33, "106": 33, "107": 34, "108": 34, "109": 38, "110": 39, "111": 40, "112": 41, "113": 41, "114": 41, "115": 42, "116": 43, "117": 43, "118": 43, "119": 46, "120": 63, "121": 64, "122": 65, "123": 65, "124": 66, "125": 66, "126": 69, "132": 126}}
+{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/newRecipe.ingredients.html", "uri": "newRecipe.ingredients.html", "source_encoding": "utf-8", "line_map": {"28": 0, "45": 1, "50": 5, "55": 9, "60": 140, "66": 3, "72": 3, "78": 7, "84": 7, "90": 11, "102": 11, "103": 15, "104": 15, "105": 16, "106": 16, "107": 17, "108": 17, "109": 22, "110": 23, "111": 24, "112": 24, "113": 24, "114": 26, "115": 27, "116": 27, "117": 27, "118": 30, "119": 31, "120": 32, "121": 33, "122": 34, "123": 34, "124": 35, "125": 35, "126": 36, "127": 36, "128": 40, "129": 41, "130": 42, "131": 43, "132": 43, "133": 43, "134": 44, "135": 45, "136": 45, "137": 45, "138": 48, "139": 65, "140": 66, "141": 67, "142": 67, "143": 68, "144": 68, "145": 71, "151": 145}}
 __M_END_METADATA
 """

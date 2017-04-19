@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1492563403.9338272
+_modified_time = 1492572769.6577196
 _enable_loop = True
 _template_filename = 'C:/Users/Kristin/Desktop/mycookbook/homepage/templates/browse.html'
 _template_uri = 'browse.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
-_exports = ['bannerArea', 'mainContent']
+_exports = ['title', 'bannerArea', 'mainContent']
 
 
 def _mako_get_namespace(context, name):
@@ -29,15 +29,22 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        def bannerArea():
+            return render_bannerArea(context._locals(__M_locals))
+        currentMeal = context.get('currentMeal', UNDEFINED)
+        recipes = context.get('recipes', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
+        mealFilter = context.get('mealFilter', UNDEFINED)
         meals = context.get('meals', UNDEFINED)
         def mainContent():
             return render_mainContent(context._locals(__M_locals))
-        recipes = context.get('recipes', UNDEFINED)
-        currentMeal = context.get('currentMeal', UNDEFINED)
-        mealFilter = context.get('mealFilter', UNDEFINED)
-        def bannerArea():
-            return render_bannerArea(context._locals(__M_locals))
         __M_writer = context.writer()
+        __M_writer('\r\n\r\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
+            context['self'].title(**pageargs)
+        
+
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'bannerArea'):
             context['self'].bannerArea(**pageargs)
@@ -49,6 +56,26 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        currentMeal = context.get('currentMeal', UNDEFINED)
+        def title():
+            return render_title(context)
+        mealFilter = context.get('mealFilter', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\r\n')
+        if mealFilter:
+            __M_writer('    ')
+            __M_writer(str( currentMeal ))
+            __M_writer(' | My Cookbook\r\n')
+        else:
+            __M_writer('    Browse | My Cookbook\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -69,12 +96,12 @@ def render_bannerArea(context,**pageargs):
 def render_mainContent(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        meals = context.get('meals', UNDEFINED)
-        def mainContent():
-            return render_mainContent(context)
         recipes = context.get('recipes', UNDEFINED)
         currentMeal = context.get('currentMeal', UNDEFINED)
         mealFilter = context.get('mealFilter', UNDEFINED)
+        meals = context.get('meals', UNDEFINED)
+        def mainContent():
+            return render_mainContent(context)
         __M_writer = context.writer()
         __M_writer('\r\n  <div class="content container">\r\n')
         if mealFilter:
@@ -111,6 +138,6 @@ def render_mainContent(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/browse.html", "uri": "browse.html", "source_encoding": "utf-8", "line_map": {"28": 0, "41": 1, "46": 5, "51": 38, "57": 3, "63": 3, "69": 7, "79": 7, "80": 9, "81": 10, "82": 10, "83": 10, "84": 11, "85": 12, "86": 14, "87": 16, "88": 17, "89": 18, "90": 18, "91": 18, "92": 18, "93": 18, "94": 21, "95": 24, "96": 25, "97": 26, "98": 27, "99": 27, "100": 29, "101": 29, "102": 30, "103": 30, "104": 33, "105": 34, "106": 36, "112": 106}}
+{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/browse.html", "uri": "browse.html", "source_encoding": "utf-8", "line_map": {"28": 0, "43": 1, "48": 9, "53": 13, "58": 46, "64": 3, "72": 3, "73": 4, "74": 5, "75": 5, "76": 5, "77": 6, "78": 7, "84": 11, "90": 11, "96": 15, "106": 15, "107": 17, "108": 18, "109": 18, "110": 18, "111": 19, "112": 20, "113": 22, "114": 24, "115": 25, "116": 26, "117": 26, "118": 26, "119": 26, "120": 26, "121": 29, "122": 32, "123": 33, "124": 34, "125": 35, "126": 35, "127": 37, "128": 37, "129": 38, "130": 38, "131": 41, "132": 42, "133": 44, "139": 133}}
 __M_END_METADATA
 """

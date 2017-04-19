@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1491839381.961522
+_modified_time = 1492572795.3805008
 _enable_loop = True
 _template_filename = 'C:/Users/Kristin/Desktop/mycookbook/homepage/templates/details.html'
 _template_uri = 'details.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
-_exports = ['bannerArea', 'mainContent']
+_exports = ['title', 'bannerArea', 'mainContent']
 
 
 def _mako_get_namespace(context, name):
@@ -31,11 +31,18 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def bannerArea():
             return render_bannerArea(context._locals(__M_locals))
+        def title():
+            return render_title(context._locals(__M_locals))
         ingredients = context.get('ingredients', UNDEFINED)
+        recipe = context.get('recipe', UNDEFINED)
         def mainContent():
             return render_mainContent(context._locals(__M_locals))
-        recipe = context.get('recipe', UNDEFINED)
         __M_writer = context.writer()
+        __M_writer('\r\n\r\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
+            context['self'].title(**pageargs)
+        
+
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'bannerArea'):
             context['self'].bannerArea(**pageargs)
@@ -47,6 +54,21 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        recipe = context.get('recipe', UNDEFINED)
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n  ')
+        __M_writer(str( recipe.recipe_name ))
+        __M_writer(' | My Cookbook\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -68,9 +90,9 @@ def render_mainContent(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         ingredients = context.get('ingredients', UNDEFINED)
+        recipe = context.get('recipe', UNDEFINED)
         def mainContent():
             return render_mainContent(context)
-        recipe = context.get('recipe', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n  <div class="content container">\r\n      <h2>')
         __M_writer(str( recipe.recipe_name ))
@@ -102,6 +124,6 @@ def render_mainContent(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/details.html", "uri": "details.html", "source_encoding": "utf-8", "line_map": {"28": 0, "39": 1, "44": 5, "49": 30, "55": 3, "61": 3, "67": 7, "75": 7, "76": 9, "77": 9, "78": 10, "79": 10, "80": 16, "81": 17, "82": 18, "83": 18, "84": 18, "85": 18, "86": 18, "87": 19, "88": 20, "89": 20, "90": 20, "91": 20, "92": 20, "93": 20, "94": 20, "95": 23, "96": 28, "97": 28, "103": 97}}
+{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/details.html", "uri": "details.html", "source_encoding": "utf-8", "line_map": {"28": 0, "41": 1, "46": 5, "51": 9, "56": 34, "62": 3, "69": 3, "70": 4, "71": 4, "77": 7, "83": 7, "89": 11, "97": 11, "98": 13, "99": 13, "100": 14, "101": 14, "102": 20, "103": 21, "104": 22, "105": 22, "106": 22, "107": 22, "108": 22, "109": 23, "110": 24, "111": 24, "112": 24, "113": 24, "114": 24, "115": 24, "116": 24, "117": 27, "118": 32, "119": 32, "125": 119}}
 __M_END_METADATA
 """

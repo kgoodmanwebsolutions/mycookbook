@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1492561812.613339
+_modified_time = 1492573087.2037368
 _enable_loop = True
 _template_filename = 'C:/Users/Kristin/Desktop/mycookbook/homepage/templates/newRecipe.directions.html'
 _template_uri = 'newRecipe.directions.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
-_exports = ['bannerArea', 'mainContent']
+_exports = ['title', 'bannerArea', 'mainContent']
 
 
 def _mako_get_namespace(context, name):
@@ -32,14 +32,21 @@ def render_body(context,**pageargs):
         def bannerArea():
             return render_bannerArea(context._locals(__M_locals))
         directionsForm = context.get('directionsForm', UNDEFINED)
-        source = context.get('source', UNDEFINED)
+        def title():
+            return render_title(context._locals(__M_locals))
         ingredient_array = context.get('ingredient_array', UNDEFINED)
         cook_time = context.get('cook_time', UNDEFINED)
         def mainContent():
             return render_mainContent(context._locals(__M_locals))
         recipe_name = context.get('recipe_name', UNDEFINED)
+        source = context.get('source', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n\r\n\r\n')
+        __M_writer('\r\n\r\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
+            context['self'].title(**pageargs)
+        
+
+        __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'bannerArea'):
             context['self'].bannerArea(**pageargs)
         
@@ -50,6 +57,18 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\r\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n  New Recipe - Step 3 | My Cookbook\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -71,14 +90,14 @@ def render_mainContent(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         directionsForm = context.get('directionsForm', UNDEFINED)
-        source = context.get('source', UNDEFINED)
         ingredient_array = context.get('ingredient_array', UNDEFINED)
         cook_time = context.get('cook_time', UNDEFINED)
         def mainContent():
             return render_mainContent(context)
         recipe_name = context.get('recipe_name', UNDEFINED)
+        source = context.get('source', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n<div class="content container">\r\n    <h1>Submit New Recipe - Step 3</h1>\r\n    \r\n    <h4><strong>Recipe Name:</strong> ')
+        __M_writer('\r\n<div class="content container">\r\n    <h1>Submit New Recipe - Step 3</h1>\r\n\r\n    <h4><strong>Recipe Name:</strong> ')
         __M_writer(str( recipe_name ))
         __M_writer('</h4>\r\n    <h4><strong>Total Cook Time:</strong> ')
         __M_writer(str( cook_time ))
@@ -110,6 +129,6 @@ def render_mainContent(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/newRecipe.directions.html", "uri": "newRecipe.directions.html", "source_encoding": "utf-8", "line_map": {"28": 0, "42": 1, "47": 6, "52": 37, "58": 4, "64": 4, "70": 8, "81": 8, "82": 12, "83": 12, "84": 13, "85": 13, "86": 14, "87": 14, "88": 17, "89": 18, "90": 19, "91": 20, "92": 20, "93": 20, "94": 20, "95": 20, "96": 20, "97": 20, "98": 23, "99": 27, "100": 28, "101": 29, "102": 29, "103": 30, "104": 30, "105": 33, "111": 105}}
+{"filename": "C:/Users/Kristin/Desktop/mycookbook/homepage/templates/newRecipe.directions.html", "uri": "newRecipe.directions.html", "source_encoding": "utf-8", "line_map": {"28": 0, "44": 1, "49": 5, "54": 9, "59": 40, "65": 3, "71": 3, "77": 7, "83": 7, "89": 11, "100": 11, "101": 15, "102": 15, "103": 16, "104": 16, "105": 17, "106": 17, "107": 20, "108": 21, "109": 22, "110": 23, "111": 23, "112": 23, "113": 23, "114": 23, "115": 23, "116": 23, "117": 26, "118": 30, "119": 31, "120": 32, "121": 32, "122": 33, "123": 33, "124": 36, "130": 124}}
 __M_END_METADATA
 """

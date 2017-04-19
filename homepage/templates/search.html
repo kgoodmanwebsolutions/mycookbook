@@ -17,15 +17,17 @@
       </h4>
       <hr>
       <form method="GET" action="/homepage/search.search/">
-        %for field in searchform:
-          <div class="form-field-div">
-            <h4 class="form-label">${ field.label_tag() }</h4>
-            <div class="checkboxes">
-              ${ field }
+        <div id="search-form">
+          %for field in searchform:
+            <div class="form-field-div">
+              <h4 class="form-label">${ field.label_tag() }</h4>
+              <div class="checkboxes">
+                ${ field }
+              </div>
             </div>
-          </div>
-        %endfor
-        <input class="btn btn-info btn-lg" type="submit" value="Search" />
+          %endfor
+        </div>
+        <input class="btn btn-info btn-lg" class="search-btn" type="submit" value="Search" />
       </form>
   </div>
 </%block>

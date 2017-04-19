@@ -210,10 +210,39 @@ hr {
 
 .checkboxes ul {
   list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .checkboxes ul li {
-  width:33.333%;
-  float:left;
-  display:inline;
+  width: 20%;
 }
+
+#search-form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.form-field-div {
+  order: 1;
+}
+
+.form-label {
+  order: 2;
+}
+
+.search-btn {
+  order: 3;
+  width: 15%;
+}
+
+.checkboxes {
+  display: flex;
+  flex-flow: row wrap;
+
+  order: 3;
+}
+
+/*.checkboxes li:nth-child(1) {
+  order: 1;
+}*/
