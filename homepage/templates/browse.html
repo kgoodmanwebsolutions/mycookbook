@@ -1,0 +1,46 @@
+<%inherit file="base.htm" />
+
+<%block name="title">
+  %if mealFilter:
+    ${ currentMeal } | My Cookbook
+  %else:
+    Browse | My Cookbook
+  %endif
+</%block>
+
+<%block name="bannerArea">
+
+</%block>
+
+<%block name="mainContent">
+  <div class="content container">
+      %if mealFilter:
+        <h1>Browse by Meal: ${ currentMeal }</h1>
+      %else:
+        <h1>Browse by Meal</h1>
+      %endif
+      <div id="meal-filter">
+        <h4><a href="/homepage/browse/">All Recipes</a></h4>
+        %if meals:
+          %for item in meals:
+            <h4><a href="/homepage/browse/${ item[1] }/">${ item[1] }</a></h4>
+          %endfor
+        %endif
+      </div>
+
+      <div id="meal-tiles" class="container">
+        %if recipes:
+          %for item in recipes:
+            <div class="tile meal">
+              <h3>${ item.recipe_name }</h3>
+              <hr>
+              <h4>Total Cook Time: ${ item.cook_time }</h4>
+              <p><a class="btn btn-default" href="/homepage/details/${ item.id }/">View Recipe &raquo;</a></p>
+            </div>
+          %endfor
+        %else:
+          <h3>No recipes currently available.</h3>
+        %endif
+      </div>
+  </div>
+</%block>

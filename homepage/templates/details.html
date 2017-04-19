@@ -1,0 +1,34 @@
+<%inherit file="base.htm" />
+
+<%block name="title">
+  ${ recipe.recipe_name } | My Cookbook
+</%block>
+
+<%block name="bannerArea">
+
+</%block>
+
+<%block name="mainContent">
+  <div class="content container">
+      <h2>${ recipe.recipe_name }</h2>
+      <h4>Total Cook Time: ${ recipe.cook_time }</h4>
+
+      <hr>
+
+      <h4>Ingredients:</h4>
+      <ul id="ingredient-list">
+        %for item in ingredients:
+          %if item.unit == "(No Units)":
+            <li>${ item.measurement } - ${ item.ingredient.ingredient_text }</li>
+          %else:
+            <li>${ item.measurement } ${ item.unit } - ${ item.ingredient.ingredient_text }</li>
+          %endif
+        %endfor
+      </ul>
+
+      <br>
+
+      <h4>Directions:</h4>
+      <p id="recipe-directions">${ recipe.directions }</p>
+  </div>
+</%block>

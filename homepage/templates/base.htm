@@ -1,0 +1,60 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+
+        <title><%block name="title">Home | My Cookbook</%block></title>
+
+        ## add any site-wide scripts or CSS here; for example, jquery:
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Nobile|Open+Sans" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+        ## render the styles with the same name as this template and its supertemplates
+        ${ django_mako_plus.link_css(self) }
+
+    </head>
+    <body>
+
+      <nav>
+        <div id="branding"><a href="/homepage/index/">
+          <img id="logo" src="${ STATIC_URL }homepage/media/SmallLightTeal.png" /></a>
+          <h2 id="header-content">My Cookbook</h2>
+        </div>
+        <ul id="nav-links">
+          <a href="/homepage/newRecipe/"><li id="submit-tab"><h4>Submit New Recipe</h4></li></a>
+          <li><h4>|</h4></li>
+          <a href="/homepage/search/"><li id="search-tab"><h4>Search</h4></li></a>
+          <li><h4>|</h4></li>
+          <a href="/homepage/browse/"><li id="browse-tab"><h4>Browse by Meal</h4></li></a>
+        </ul>
+      </nav>
+
+      <div id="banner-area">
+        <%block name="bannerArea">
+
+        </%block>
+      </div>
+
+      <div id="main-content">
+        <%block name="mainContent">
+
+        </%block>
+      </div>
+
+      <div id="footer">
+        <h4>K Goodman Web Solutions, LLC | 2017</h4>
+        <p>Enjoy this site? Check out some of my other work <a href="www.kgoodmanwebsolutions.com">here</a>!</p>
+      </div>
+
+      ## render the scripts with the same name as this template and its supertemplates
+      ${ django_mako_plus.link_js(self) }
+
+    </body>
+</html>

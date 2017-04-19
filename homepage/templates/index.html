@@ -1,0 +1,44 @@
+<%inherit file="base.htm" />
+
+<%block name="bannerArea">
+  <div class="container">
+    <img id="banner-img" src="${ STATIC_URL }homepage/media/camaje-cooking-7.jpg" />
+  </div>
+</%block>
+
+<%block name="mainContent">
+    <div class="content container">
+        <h1>Welcome!</h1>
+        <h4>I have created this site to collect recipes that my family and I enjoy.
+          Meal planning has always been a struggle for me, especially since I have
+          recipes in so many places and mediums. This is a centralized location where
+          I can collect the recipes we enjoy without all the clutter of a hard copy.</h4>
+    </div>
+
+    <div class="container" id="tiles">
+      <div class="row">
+        <a href="/homepage/browse/" class="tile-link">
+          <div class="col-sm-4 tile">
+            <h2>Browse by Meal</h2>
+            <hr>
+            <p>Need some meal ideas? Browse recipes by meal on this page.</p>
+          </div>
+        </a>
+        <a href="/homepage/search/" class="tile-link">
+          <div class="col-sm-4 tile">
+            <h2>Search</h2>
+            <hr>
+            <p>Have some ingredients that need to be used soon? Search recipes based
+            on ingredients you have on hand.</p>
+          </div>
+        </a>
+        <a href="/homepage/newRecipe/" class="tile-link">
+          <div class="col-sm-4 tile">
+            <h2>Submit New Recipe</h2>
+            <hr>
+            <p>Help us by submitting recipes you have enjoyed so others can enjoy them as well!</p>
+          </div>
+        </a>
+      </div>
+    </div>
+</%block>

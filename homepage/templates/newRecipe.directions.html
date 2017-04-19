@@ -1,0 +1,40 @@
+<%inherit file="base.htm" />
+
+<%block name="title">
+  New Recipe - Step 3 | My Cookbook
+</%block>
+
+<%block name="bannerArea">
+
+</%block>
+
+<%block name="mainContent">
+<div class="content container">
+    <h1>Submit New Recipe - Step 3</h1>
+
+    <h4><strong>Recipe Name:</strong> ${ recipe_name }</h4>
+    <h4><strong>Total Cook Time:</strong> ${ cook_time }</h4>
+    <h4><strong>Source:</strong> ${ source }</h4>
+    <hr>
+
+    %if ingredient_array:
+      <h3>Ingredients</h3>
+      %for item in ingredient_array:
+        <h4>${ item[0] } ${ item[1] } ${ item[2] }</h4>
+      %endfor
+    %endif
+
+    <hr>
+
+    <form method="POST" action="/homepage/newRecipe.submit/">
+      %for field in directionsForm:
+        <div class="form-field-div">
+          <h3 class="form-label">${ field.label_tag() }</h3>
+          ${ field }
+        </div>
+      %endfor
+      <input class="btn btn-info btn-lg" type="submit" value="Finish" />
+    </form>
+
+</div>
+</%block>

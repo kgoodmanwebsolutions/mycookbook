@@ -1,0 +1,26 @@
+<%inherit file="base.htm" />
+
+<%block name="title">
+  New Recipe - Step 1 | My Cookbook
+</%block>
+
+<%block name="bannerArea">
+
+</%block>
+
+<%block name="mainContent">
+<div class="content container">
+    <h1>Submit New Recipe - Step 1</h1>
+
+    <form method="POST" action="/homepage/newRecipe.info/">
+      %for field in recipeInfoForm:
+        <div class="form-field-div checkboxes">
+          <h4 class="form-label">${ field.label_tag() }</h4>
+          ${ field }
+        </div>
+      %endfor
+      <input class="btn btn-info btn-lg" type="submit" value="Next" />
+    </form>
+
+</div>
+</%block>
