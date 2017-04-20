@@ -149,9 +149,9 @@ WSGI_APPLICATION = 'mycookbook.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'mycookbookdb',
+            'NAME': 'MyCookbook',
             'USER': 'postgres',
-            'PASSWORD': 'mycookbook',
+            'PASSWORD': 'elizabeth13',
             'HOST': 'localhost',
         },
     # 'default': {
