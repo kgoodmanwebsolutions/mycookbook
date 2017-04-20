@@ -218,6 +218,10 @@ hr {
   width: 20%;
 }
 
+.meals ul li {
+  width: 33.333%;
+}
+
 #search-form {
   display: flex;
   flex-flow: column wrap;

@@ -14,10 +14,17 @@
 
     <form method="POST" action="/homepage/newRecipe.info/">
       %for field in recipeInfoForm:
-        <div class="form-field-div checkboxes">
-          <h4 class="form-label">${ field.label_tag() }</h4>
-          ${ field }
-        </div>
+        %if field.name == 'meals':
+        <h4 class="form-label">${ field.label_tag() }</h4>
+          <div class="form-field-div checkboxes meals">
+            ${ field }
+          </div>
+        %else:
+          <div class="form-field-div">
+            <h4 class="form-label">${ field.label_tag() }</h4>
+            ${ field }
+          </div>
+        %endif
       %endfor
       <input class="btn btn-info btn-lg" type="submit" value="Next" />
     </form>
